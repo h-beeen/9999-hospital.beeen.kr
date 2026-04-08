@@ -23,7 +23,38 @@ const STEPS = [
 
 const KOREAN_WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 
-/* Unified dark overlay for department selection cards */
+/* Department icon SVGs for selection cards */
+const DEPT_ICON_MAP: Record<string, React.ReactNode> = {
+  stethoscope: (
+    <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2v6m0 0a4 4 0 004 4h1a3 3 0 013 3v1a3 3 0 01-3 3 3 3 0 01-3-3v-1a3 3 0 013-3h1a4 4 0 004-4V2" />
+      <path d="M8 2v4a4 4 0 004 4" />
+    </svg>
+  ),
+  bone: (
+    <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18.5 5.5a2.12 2.12 0 01-3 3L9 15l-1.5 1.5" />
+      <path d="M5.5 18.5a2.12 2.12 0 003-3L15 9l1.5-1.5" />
+      <circle cx="19" cy="5" r="2" />
+      <circle cx="5" cy="19" r="2" />
+    </svg>
+  ),
+  skin: (
+    <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3l1.5 3.2L17 7.5l-2.5 2.8.4 3.7L12 12.5 9.1 14l.4-3.7L7 7.5l3.5-1.3L12 3z" />
+      <path d="M5 16l1 2.2L8.5 19l-1.8 1.8.3 2.7L5 22l-2 1.5.3-2.7L1.5 19 4 18.2 5 16z" />
+      <path d="M19 16l1 2.2 2.5.8-1.8 1.8.3 2.7L19 22l-2 1.5.3-2.7-1.8-1.8 2.5-.8L19 16z" />
+    </svg>
+  ),
+  family: (
+    <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z" />
+      <circle cx="9" cy="13" r="1.25" />
+      <circle cx="15" cy="13" r="1.25" />
+      <circle cx="12" cy="10" r="1" />
+    </svg>
+  ),
+};
 
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                            */
@@ -325,7 +356,7 @@ export default function ReservationPage() {
                         : "border-border/50"
                     )}
                   >
-                    {/* Department image with dark overlay */}
+                    {/* Department image with icon overlay */}
                     <div className="relative flex h-[100px] items-center justify-center overflow-hidden">
                       <Image
                         src={dept.image}
@@ -335,9 +366,9 @@ export default function ReservationPage() {
                         sizes="(max-width: 768px) 50vw, 25vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-b from-[#1A2332]/60 to-[#1A2332]/80" />
-                      <span className="relative z-10 text-3xl font-bold text-white/80">
-                        {dept.titleKo.charAt(0)}
-                      </span>
+                      <div className="relative z-10">
+                        {DEPT_ICON_MAP[dept.icon] ?? DEPT_ICON_MAP.stethoscope}
+                      </div>
                     </div>
 
                     {/* Name */}
