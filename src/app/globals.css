@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* =================================================================
+   Hospital Demo v1 — Design System
+   Base: 0002-designw.kr Design System (adapted for hospital)
+   Font: Pretendard only (NO Serif)
+   Approach: Mobile First
+   ================================================================= */
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #1a2332;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Colors — Hospital palette */
+  --color-primary: #1a2332;
+  --color-primary-light: #2d3a4a;
+  --color-secondary: #5a6b7d;
+  --color-accent: #2d8cf0;
+  --color-accent-dark: #1a6bc4;
+  --color-accent-light: #e8f2fe;
+  --color-surface: #f5f7fa;
+  --color-surface-dark: #ebeef2;
+  --color-border: #dde3ea;
+  --color-dark-bg: #0f1923;
+  --color-success: #22c55e;
+  --color-warm: #c8a97e;
+
+  /* Breakpoints */
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1080px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  /* Spacing */
+  --sp-xs: 4px;
+  --sp-sm: 8px;
+  --sp-md: 16px;
+  --sp-lg: 24px;
+  --sp-xl: 40px;
+  --sp-2xl: 64px;
+  --sp-3xl: 120px;
+
+  /* Typography — responsive clamp */
+  --text-hero: clamp(1.75rem, 5vw, 3.5rem);
+  --text-section: clamp(1.5rem, 4vw, 2.5rem);
+  --text-sub: clamp(1rem, 2vw, 1.5rem);
+  --text-body: clamp(0.9375rem, 1.2vw, 1.125rem);
+  --text-caption: clamp(0.75rem, 1vw, 0.875rem);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* GNB heights */
+  --gnb-h-desktop: 72px;
+  --gnb-h-scrolled: 60px;
+  --gnb-h-mobile: 56px;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =================================================================
+   Base Resets
+   ================================================================= */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  line-height: 1.7;
+  letter-spacing: -0.02em;
+  overflow-x: hidden;
+}
+
+/* =================================================================
+   Reduced Motion
+   ================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =================================================================
+   Scroll indicator bounce
+   ================================================================= */
+
+@keyframes bounce-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-bounce-down {
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+/* =================================================================
+   Hide scrollbar
+   ================================================================= */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
