@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { DEPARTMENTS } from "@/lib/data";
@@ -120,74 +121,78 @@ export default function DepartmentsSection() {
                 delay: i * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
             >
-              {/* Icon area with gradient */}
-              <div
-                className={cn(
-                  "relative flex h-[160px] items-center justify-center bg-gradient-to-br md:h-[180px]",
-                  GRADIENT_MAP[dept.category] ?? "from-accent to-accent-dark",
-                )}
+              <Link
+                href={`/departments/${dept.category}`}
+                className="group block overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
               >
-                {/* Background pattern dots */}
-                <div className="absolute inset-0 opacity-10">
-                  <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <pattern
-                        id={`dots-${dept.category}`}
-                        x="0"
-                        y="0"
-                        width="20"
-                        height="20"
-                        patternUnits="userSpaceOnUse"
-                      >
-                        <circle cx="2" cy="2" r="1.5" fill="white" />
-                      </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill={`url(#dots-${dept.category})`} />
-                  </svg>
+                {/* Icon area with gradient */}
+                <div
+                  className={cn(
+                    "relative flex h-[160px] items-center justify-center bg-gradient-to-br md:h-[180px]",
+                    GRADIENT_MAP[dept.category] ?? "from-accent to-accent-dark",
+                  )}
+                >
+                  {/* Background pattern dots */}
+                  <div className="absolute inset-0 opacity-10">
+                    <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <pattern
+                          id={`dots-${dept.category}`}
+                          x="0"
+                          y="0"
+                          width="20"
+                          height="20"
+                          patternUnits="userSpaceOnUse"
+                        >
+                          <circle cx="2" cy="2" r="1.5" fill="white" />
+                        </pattern>
+                      </defs>
+                      <rect width="100%" height="100%" fill={`url(#dots-${dept.category})`} />
+                    </svg>
+                  </div>
+
+                  {/* Icon */}
+                  <div className="relative transition-transform duration-300 group-hover:scale-110">
+                    {ICON_MAP[dept.icon] ?? ICON_MAP.stethoscope}
+                  </div>
+
+                  {/* English label overlay */}
+                  <span className="absolute bottom-3 left-4 text-xs font-medium uppercase tracking-[0.08em] text-white/60">
+                    {dept.titleEn}
+                  </span>
                 </div>
 
-                {/* Icon */}
-                <div className="relative transition-transform duration-300 group-hover:scale-110">
-                  {ICON_MAP[dept.icon] ?? ICON_MAP.stethoscope}
+                {/* Content */}
+                <div className="p-5">
+                  <span className="text-[48px] font-extrabold leading-none text-border">
+                    {dept.number}
+                  </span>
+                  <h3 className="mt-2 text-sm font-bold text-primary md:text-base">
+                    {dept.titleKo}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-secondary">
+                    {dept.description.split("\n").map((line, j) => (
+                      <span key={j}>
+                        {j > 0 && <br />}
+                        {line}
+                      </span>
+                    ))}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
+                    자세히 보기
+                    <svg
+                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </div>
-
-                {/* English label overlay */}
-                <span className="absolute bottom-3 left-4 text-xs font-medium uppercase tracking-[0.08em] text-white/60">
-                  {dept.titleEn}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <span className="text-[48px] font-extrabold leading-none text-border">
-                  {dept.number}
-                </span>
-                <h3 className="mt-2 text-sm font-bold text-primary md:text-base">
-                  {dept.titleKo}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-secondary">
-                  {dept.description.split("\n").map((line, j) => (
-                    <span key={j}>
-                      {j > 0 && <br />}
-                      {line}
-                    </span>
-                  ))}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
-                  자세히 보기
-                  <svg
-                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>

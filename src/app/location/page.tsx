@@ -30,7 +30,7 @@ export default function LocationPage() {
           </p>
 
           <a
-            href={`tel:${HOSPITAL.phone}`}
+            href={`tel:${HOSPITAL.phone.replace(/-/g, "")}`}
             className="mt-1 inline-block text-[clamp(0.9375rem,1.2vw,1.125rem)] font-medium text-accent transition-colors hover:text-accent/80"
           >
             {HOSPITAL.phone}
@@ -42,32 +42,14 @@ export default function LocationPage() {
       <section className="mt-10 md:mt-14">
         <Container>
           <div className="relative h-[300px] w-full overflow-hidden rounded-xl bg-surface md:h-[400px]">
-            <div className="flex h-full items-center justify-center text-secondary">
-              <div className="text-center">
-                <svg
-                  className="mx-auto h-12 w-12 text-accent/30"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                  />
-                </svg>
-                <p className="mt-3 text-sm">지도 영역</p>
-                <p className="mt-1 text-xs text-secondary/60">
-                  {HOSPITAL.address}
-                </p>
-              </div>
-            </div>
+            <iframe
+              src={`https://map.kakao.com/?q=${encodeURIComponent(HOSPITAL.address)}`}
+              className="h-full w-full border-0"
+              title="병원 위치 - 카카오맵"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
 
           {/* External map links */}
@@ -233,7 +215,7 @@ export default function LocationPage() {
                   <div>
                     <p className="text-sm font-medium text-secondary">전화</p>
                     <a
-                      href={`tel:${HOSPITAL.phone}`}
+                      href={`tel:${HOSPITAL.phone.replace(/-/g, "")}`}
                       className="mt-0.5 inline-block text-primary transition-colors hover:text-accent"
                     >
                       {HOSPITAL.phone}

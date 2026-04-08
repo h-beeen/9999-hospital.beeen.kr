@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Container from "@/components/ui/Container";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -328,12 +329,15 @@ export default async function DepartmentDetailPage({
                   href={`/doctors/${doctor.id}`}
                   className="group overflow-hidden rounded-xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
                 >
-                  {/* Profile image placeholder */}
-                  <div className="relative flex h-[200px] items-center justify-center bg-gradient-to-b from-accent/20 to-accent/5 md:h-[240px]">
-                    <span className="select-none text-[64px] font-bold leading-none text-accent/30 md:text-[80px]">
-                      {doctor.name.charAt(0)}
-                    </span>
-                    <div className="absolute bottom-4 right-4 h-14 w-14 rounded-full border-2 border-accent/10" />
+                  {/* Profile image */}
+                  <div className="relative h-[200px] overflow-hidden bg-gradient-to-b from-accent/10 to-accent/5 md:h-[240px]">
+                    <Image
+                      src={doctor.image}
+                      alt={`${doctor.name} ${doctor.title}`}
+                      fill
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                   </div>
 
                   {/* Content */}

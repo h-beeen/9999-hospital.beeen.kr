@@ -188,13 +188,11 @@ export default function GNB() {
         >
           <div className="mb-4 flex items-center justify-center gap-4">
             {SOCIAL_LINKS.map((link) => (
-              <a
+              <span
                 key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
-                aria-label={link.label}
+                title="준비중"
+                className="flex h-11 w-11 cursor-default items-center justify-center rounded-full border border-white/20 text-white/40"
+                aria-label={`${link.label} (준비중)`}
               >
                 {link.icon === "instagram" ? (
                   <svg
@@ -213,7 +211,7 @@ export default function GNB() {
                     <path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" />
                   </svg>
                 )}
-              </a>
+              </span>
             ))}
           </div>
           <Link

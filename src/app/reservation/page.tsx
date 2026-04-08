@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -170,6 +171,13 @@ export default function ReservationPage() {
               <p className="mt-2 text-secondary">
                 아래 예약 정보를 확인해 주세요.
               </p>
+
+              {/* Demo notice */}
+              <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+                <p className="text-sm font-medium text-amber-800">
+                  본 사이트는 데모 사이트입니다. 실제 예약은 접수되지 않습니다.
+                </p>
+              </div>
 
               {/* Summary card */}
               <div className="mt-8 rounded-xl border border-border/50 bg-white p-6 text-left shadow-sm">
@@ -387,11 +395,15 @@ export default function ReservationPage() {
                         : "border-border/50"
                     )}
                   >
-                    {/* Gradient placeholder with initial */}
-                    <div className="flex h-[140px] items-center justify-center bg-gradient-to-b from-accent/20 to-accent/5">
-                      <span className="select-none text-[48px] font-bold leading-none text-accent/30">
-                        {doctor.name.charAt(0)}
-                      </span>
+                    {/* Doctor profile image */}
+                    <div className="relative h-[140px] overflow-hidden bg-gradient-to-b from-accent/10 to-accent/5">
+                      <Image
+                        src={doctor.image}
+                        alt={`${doctor.name} ${doctor.title}`}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
                     </div>
 
                     {/* Info */}

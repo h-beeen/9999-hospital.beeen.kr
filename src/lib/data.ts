@@ -137,7 +137,7 @@ export const DOCTORS: Doctor[] = [
     title: "원장",
     specialty: "내과 전문의",
     description: "서울대학교 의과대학 졸업\n내과 전문의 취득\n전) 서울대학교병원 내과 전임의",
-    image: "/images/doctor-01.jpg",
+    image: "/images/doctor-1.jpg",
     department: "internal",
   },
   {
@@ -146,7 +146,7 @@ export const DOCTORS: Doctor[] = [
     title: "부원장",
     specialty: "정형외과 전문의",
     description: "연세대학교 의과대학 졸업\n정형외과 전문의 취득\n전) 세브란스병원 정형외과 전임의",
-    image: "/images/doctor-02.jpg",
+    image: "/images/doctor-2.jpg",
     department: "orthopedics",
   },
   {
@@ -155,7 +155,7 @@ export const DOCTORS: Doctor[] = [
     title: "과장",
     specialty: "피부과 전문의",
     description: "고려대학교 의과대학 졸업\n피부과 전문의 취득\n전) 고려대학교병원 피부과 전임의",
-    image: "/images/doctor-03.jpg",
+    image: "/images/doctor-3.jpg",
     department: "dermatology",
   },
   {
@@ -164,7 +164,7 @@ export const DOCTORS: Doctor[] = [
     title: "과장",
     specialty: "가정의학과 전문의",
     description: "성균관대학교 의과대학 졸업\n가정의학과 전문의 취득\n전) 삼성서울병원 가정의학과 전임의",
-    image: "/images/doctor-04.jpg",
+    image: "/images/doctor-4.jpg",
     department: "family",
   },
 ];

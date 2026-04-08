@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import SectionLabel from "@/components/ui/SectionLabel";
 
@@ -17,22 +18,15 @@ export default function AboutSection() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-5"
           >
-            <div className="relative flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-[#2D8CF0]/10 via-[#2D8CF0]/5 to-[#1A2332]/10 lg:rounded-2xl">
-              <div className="flex h-[280px] w-full items-center justify-center md:h-[400px] lg:h-[480px]">
-                {/* Medical cross icon */}
-                <svg
-                  className="h-20 w-20 text-accent/20 md:h-28 md:w-28"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={0.8}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 4.5v15m7.5-7.5h-15"
-                  />
-                </svg>
+            <div className="relative overflow-hidden rounded-xl lg:rounded-2xl">
+              <div className="relative h-[280px] w-full md:h-[400px] lg:h-[480px]">
+                <Image
+                  src="/images/facility.jpg"
+                  alt="병원 내부 시설"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
               </div>
 
               {/* Subtle border */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { HOSPITAL } from "@/lib/constants";
 
@@ -19,8 +20,18 @@ export default function HeroSection() {
       id="hero"
       className="relative flex h-[600px] max-h-[600px] items-center justify-center overflow-hidden"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0F1923] via-[#1A2332] to-[#2D3A4A]" />
+      {/* Background image */}
+      <Image
+        src="/images/hero-bg.jpg"
+        alt="Hospital exterior"
+        fill
+        className="object-cover"
+        priority
+        quality={85}
+      />
+
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0F1923]/80 via-[#1A2332]/70 to-[#2D3A4A]/80" />
 
       {/* Subtle pattern overlay */}
       <div
@@ -31,9 +42,6 @@ export default function HeroSection() {
           backgroundSize: "40px 40px",
         }}
       />
-
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex w-full max-w-[1080px] flex-col items-center px-5 text-center md:px-10">

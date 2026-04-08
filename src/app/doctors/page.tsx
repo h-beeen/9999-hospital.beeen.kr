@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -110,12 +111,15 @@ export default function DoctorsPage() {
                   href={`/doctors/${doctor.id}`}
                   className="group block overflow-hidden rounded-xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
                 >
-                  {/* Profile image placeholder with gradient and initial */}
-                  <div className="relative flex h-[240px] items-center justify-center bg-gradient-to-b from-accent/20 to-accent/5 md:h-[280px]">
-                    <span className="select-none text-[64px] font-bold leading-none text-accent/30 md:text-[80px]">
-                      {doctor.name.charAt(0)}
-                    </span>
-                    <div className="absolute bottom-4 right-4 h-16 w-16 rounded-full border-2 border-accent/10" />
+                  {/* Profile image */}
+                  <div className="relative h-[240px] overflow-hidden bg-gradient-to-b from-accent/10 to-accent/5 md:h-[280px]">
+                    <Image
+                      src={doctor.image}
+                      alt={`${doctor.name} ${doctor.title}`}
+                      fill
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
                   </div>
 
                   {/* Content */}

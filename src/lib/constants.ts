@@ -58,12 +58,12 @@ export const TRANSPORT_INFO: TransportInfo[] = [
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/hospital-demo/",
+    href: "#", // TODO: 실제 Instagram URL로 교체 필요
     icon: "instagram",
   },
   {
     label: "Blog",
-    href: "https://blog.naver.com/hospital-demo",
+    href: "#", // TODO: 실제 네이버 블로그 URL로 교체 필요
     icon: "blog",
   },
 ];

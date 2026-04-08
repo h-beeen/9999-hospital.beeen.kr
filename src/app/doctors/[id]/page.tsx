@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -86,13 +87,16 @@ export default async function DoctorDetailPage({
         {/*  Profile section (2-column)                               */}
         {/* -------------------------------------------------------- */}
         <section className="mb-16 grid gap-8 md:grid-cols-2 md:gap-12">
-          {/* Left — gradient placeholder with large initial */}
-          <div className="relative flex h-[300px] items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-b from-accent/20 to-accent/5 md:h-[400px]">
-            <span className="select-none text-[100px] font-bold leading-none text-accent/25 md:text-[140px]">
-              {doctor.name.charAt(0)}
-            </span>
-            <div className="absolute bottom-6 right-6 h-20 w-20 rounded-full border-2 border-accent/10" />
-            <div className="absolute top-6 left-6 h-12 w-12 rounded-full border-2 border-accent/10" />
+          {/* Left — doctor profile photo */}
+          <div className="relative h-[300px] overflow-hidden rounded-2xl bg-gradient-to-b from-accent/10 to-accent/5 md:h-[400px]">
+            <Image
+              src={doctor.image}
+              alt={`${doctor.name} ${doctor.title}`}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
           </div>
 
           {/* Right — info */}
@@ -253,11 +257,15 @@ export default async function DoctorDetailPage({
                   href={`/doctors/${d.id}`}
                   className="group block w-[200px] shrink-0 overflow-hidden rounded-xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)] md:w-auto"
                 >
-                  {/* Mini profile placeholder */}
-                  <div className="relative flex h-[160px] items-center justify-center bg-gradient-to-b from-accent/20 to-accent/5">
-                    <span className="select-none text-[48px] font-bold leading-none text-accent/30">
-                      {d.name.charAt(0)}
-                    </span>
+                  {/* Mini profile photo */}
+                  <div className="relative h-[160px] overflow-hidden bg-gradient-to-b from-accent/10 to-accent/5">
+                    <Image
+                      src={d.image}
+                      alt={`${d.name} ${d.title}`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="200px"
+                    />
                   </div>
 
                   {/* Content */}

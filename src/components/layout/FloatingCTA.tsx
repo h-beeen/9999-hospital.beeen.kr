@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 
 export default function FloatingCTA() {
@@ -25,17 +26,8 @@ export default function FloatingCTA() {
           className="fixed bottom-0 left-0 z-40 w-full lg:hidden"
           style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
         >
-          <a
-            href="#reservation"
-            onClick={(e) => {
-              e.preventDefault();
-              const target = document.querySelector("#reservation");
-              if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
-              } else {
-                window.location.href = "/reservation";
-              }
-            }}
+          <Link
+            href="/reservation"
             className="flex h-14 items-center justify-center gap-2 bg-accent font-semibold text-white shadow-[0_-2px_12px_rgba(0,0,0,0.1)] active:bg-accent-dark"
           >
             {/* Calendar Icon */}
@@ -53,7 +45,7 @@ export default function FloatingCTA() {
               />
             </svg>
             진료 예약하기
-          </a>
+          </Link>
         </motion.div>
       )}
     </AnimatePresence>

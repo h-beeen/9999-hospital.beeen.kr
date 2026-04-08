@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { DOCTORS } from "@/lib/data";
@@ -50,44 +52,48 @@ export default function DoctorsSection() {
                 delay: i * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group overflow-hidden rounded-xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
             >
-              {/* Profile image placeholder with gradient and initials */}
-              <div className="relative flex h-[240px] items-center justify-center bg-gradient-to-b from-accent/20 to-accent/5 md:h-[280px]">
-                {/* Initials */}
-                <span className="select-none text-[64px] font-bold leading-none text-accent/30 md:text-[80px]">
-                  {doctor.name.charAt(0)}
-                </span>
-
-                {/* Subtle decorative circle */}
-                <div className="absolute bottom-4 right-4 h-16 w-16 rounded-full border-2 border-accent/10" />
-              </div>
-
-              {/* Content */}
-              <div className="p-4">
-                {/* Name and title */}
-                <div className="flex items-center gap-2">
-                  <h3 className="text-base font-bold text-primary md:text-lg">
-                    {doctor.name}
-                  </h3>
-                  <span
-                    className={
-                      "inline-block rounded px-2 py-0.5 text-xs font-medium " +
-                      (TITLE_STYLE[doctor.title] ?? "bg-accent-light text-accent")
-                    }
-                  >
-                    {doctor.title}
-                  </span>
+              <Link
+                href={`/doctors/${doctor.id}`}
+                className="group block overflow-hidden rounded-xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
+              >
+                {/* Profile image */}
+                <div className="relative h-[240px] overflow-hidden bg-gradient-to-b from-accent/10 to-accent/5 md:h-[280px]">
+                  <Image
+                    src={doctor.image}
+                    alt={`${doctor.name} ${doctor.title}`}
+                    fill
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
                 </div>
 
-                {/* Specialty */}
-                <p className="mt-1 text-sm text-secondary">{doctor.specialty}</p>
+                {/* Content */}
+                <div className="p-4">
+                  {/* Name and title */}
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-base font-bold text-primary md:text-lg">
+                      {doctor.name}
+                    </h3>
+                    <span
+                      className={
+                        "inline-block rounded px-2 py-0.5 text-xs font-medium " +
+                        (TITLE_STYLE[doctor.title] ?? "bg-accent-light text-accent")
+                      }
+                    >
+                      {doctor.title}
+                    </span>
+                  </div>
 
-                {/* Description (multi-line career history) */}
-                <p className="mt-2 whitespace-pre-line text-xs leading-relaxed text-secondary/80">
-                  {doctor.description}
-                </p>
-              </div>
+                  {/* Specialty */}
+                  <p className="mt-1 text-sm text-secondary">{doctor.specialty}</p>
+
+                  {/* Description (multi-line career history) */}
+                  <p className="mt-2 whitespace-pre-line text-xs leading-relaxed text-secondary/80">
+                    {doctor.description}
+                  </p>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>
