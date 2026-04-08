@@ -28,20 +28,6 @@ export default function GNB() {
     setMenuOpen(false);
   }, [pathname]);
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      setMenuOpen(false);
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   return (
     <>
       <header
@@ -90,32 +76,17 @@ export default function GNB() {
           <ul className="ml-auto hidden items-center gap-8 lg:flex">
             {NAV_ITEMS.map((item) => (
               <li key={item.label}>
-                {item.href.startsWith("#") ? (
-                  <a
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    className={cn(
-                      "text-[15px] font-medium transition-colors",
-                      scrolled
-                        ? "text-primary-light hover:text-accent"
-                        : "text-white/80 hover:text-white"
-                    )}
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "text-[15px] font-medium transition-colors",
-                      scrolled
-                        ? "text-primary-light hover:text-accent"
-                        : "text-white/80 hover:text-white"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                )}
+                <Link
+                  href={item.href}
+                  className={cn(
+                    "text-[15px] font-medium transition-colors",
+                    scrolled
+                      ? "text-primary-light hover:text-accent"
+                      : "text-white/80 hover:text-white"
+                  )}
+                >
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -178,46 +149,27 @@ export default function GNB() {
 
         {/* Menu Items — centered */}
         <nav className="flex flex-1 flex-col items-center justify-center gap-8 px-6">
-          {NAV_ITEMS.map((item, i) =>
-            item.href.startsWith("#") ? (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className={cn(
-                  "text-3xl font-black tracking-tight text-white/90 transition-all duration-300 hover:scale-110 hover:text-white",
-                  menuOpen
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                )}
-                style={{
-                  transitionDelay: menuOpen ? `${100 + i * 60}ms` : "0ms",
-                }}
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className={cn(
-                  "text-3xl font-black tracking-tight transition-all duration-300 hover:scale-110",
-                  pathname === item.href
-                    ? "text-accent"
-                    : "text-white/90 hover:text-white",
-                  menuOpen
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                )}
-                style={{
-                  transitionDelay: menuOpen ? `${100 + i * 60}ms` : "0ms",
-                }}
-              >
-                {item.label}
-              </Link>
-            )
-          )}
+          {NAV_ITEMS.map((item, i) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+              className={cn(
+                "text-3xl font-black tracking-tight transition-all duration-300 hover:scale-110",
+                pathname === item.href
+                  ? "text-accent"
+                  : "text-white/90 hover:text-white",
+                menuOpen
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-4 opacity-0"
+              )}
+              style={{
+                transitionDelay: menuOpen ? `${100 + i * 60}ms` : "0ms",
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         {/* Bottom — SNS + CTA */}
@@ -264,9 +216,9 @@ export default function GNB() {
               </a>
             ))}
           </div>
-          <a
-            href="#reservation"
-            onClick={(e) => handleNavClick(e, "#reservation")}
+          <Link
+            href="/reservation"
+            onClick={() => setMenuOpen(false)}
             className="flex h-[52px] w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-accent font-semibold text-white transition-colors active:bg-accent-dark"
           >
             {/* Calendar Icon */}
@@ -284,7 +236,7 @@ export default function GNB() {
               />
             </svg>
             진료 예약하기
-          </a>
+          </Link>
         </div>
       </div>
     </>

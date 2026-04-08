@@ -17,6 +17,13 @@ export interface Doctor {
   specialty: string;
   description: string;
   image: string;
+  department: string;
+}
+
+export interface DoctorDetail extends Doctor {
+  education: string[];
+  career: string[];
+  specialties: string[];
 }
 
 export interface Department {
@@ -27,6 +34,19 @@ export interface Department {
   description: string;
   icon: string;
   image: string;
+}
+
+export interface DepartmentDetail extends Department {
+  fullDescription: string;
+  specialtyAreas: string[];
+  diseases: Disease[];
+  doctorIds: number[];
+  colorTheme: string;
+}
+
+export interface Disease {
+  name: string;
+  description: string;
 }
 
 export interface Stat {
@@ -50,4 +70,17 @@ export interface TimeSlot {
   day: string;
   hours: string;
   note?: string;
+}
+
+export interface QuickLink {
+  label: string;
+  href: string;
+  icon: string;
+}
+
+export interface TransportInfo {
+  type: "subway" | "bus" | "car" | "parking";
+  label: string;
+  icon: string;
+  items: string[];
 }
