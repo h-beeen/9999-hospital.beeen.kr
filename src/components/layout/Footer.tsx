@@ -108,11 +108,22 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="group flex items-center gap-1.5 transition-all"
             >
-              <span className="text-[13px] text-white transition-colors group-hover:text-accent">
+              <span className="text-[13px] text-white transition-colors group-hover:text-[#0064FF]">
                 Powered by
               </span>
-              <span className="text-[13px] font-semibold text-white/60 transition-colors group-hover:text-accent">
-                beeenLAB
+              <span className="relative h-4 w-auto">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logos/beeenlab-pro.png"
+                  alt="beeenLAB Logo"
+                  className="h-4 w-auto object-contain transition-opacity duration-200 group-hover:opacity-0"
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logos/beeenlab-pro-hover.png"
+                  alt="beeenLAB Logo Hover"
+                  className="absolute inset-0 h-4 w-auto object-contain opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                />
               </span>
             </a>
           </div>
