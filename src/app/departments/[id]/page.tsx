@@ -182,31 +182,27 @@ export default async function DepartmentDetailPage({
 
       {/* ── Hero Banner ── */}
       <section
-        className={cn(
-          "relative overflow-hidden bg-gradient-to-br py-16 md:py-24",
-          GRADIENT_MAP[dept.colorTheme] ?? "from-accent to-accent-dark",
-        )}
+        className="relative overflow-hidden py-16 md:py-24"
       >
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern
-                id="hero-dots"
-                x="0"
-                y="0"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle cx="2" cy="2" r="1.5" fill="white" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#hero-dots)" />
-          </svg>
-        </div>
+        {/* Background image */}
+        <Image
+          src={dept.image}
+          alt={dept.titleKo}
+          fill
+          className="object-cover"
+          priority
+          quality={80}
+        />
 
-        <Container className="relative">
+        {/* Gradient overlay */}
+        <div
+          className={cn(
+            "absolute inset-0 bg-gradient-to-br opacity-80",
+            GRADIENT_MAP[dept.colorTheme] ?? "from-accent to-accent-dark",
+          )}
+        />
+
+        <Container className="relative z-10">
           <div className="flex flex-col items-center text-center">
             {/* Icon */}
             <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white/15 backdrop-blur-sm md:h-28 md:w-28">

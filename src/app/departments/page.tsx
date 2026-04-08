@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -116,39 +117,34 @@ export default function DepartmentsPage() {
               href={`/departments/${dept.category}`}
               className="group overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
             >
-              {/* Icon area with gradient */}
+              {/* Image area with gradient overlay */}
               <div
-                className={cn(
-                  "relative flex h-[160px] items-center justify-center bg-gradient-to-br md:h-[180px]",
-                  GRADIENT_MAP[dept.category] ?? "from-accent to-accent-dark",
-                )}
+                className="relative flex h-[160px] items-center justify-center overflow-hidden md:h-[180px]"
               >
-                {/* Background pattern dots */}
-                <div className="absolute inset-0 opacity-10">
-                  <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <pattern
-                        id={`dots-list-${dept.category}`}
-                        x="0"
-                        y="0"
-                        width="20"
-                        height="20"
-                        patternUnits="userSpaceOnUse"
-                      >
-                        <circle cx="2" cy="2" r="1.5" fill="white" />
-                      </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill={`url(#dots-list-${dept.category})`} />
-                  </svg>
-                </div>
+                {/* Department photo */}
+                <Image
+                  src={dept.image}
+                  alt={dept.titleKo}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+
+                {/* Gradient overlay */}
+                <div
+                  className={cn(
+                    "absolute inset-0 bg-gradient-to-br opacity-75",
+                    GRADIENT_MAP[dept.category] ?? "from-accent to-accent-dark",
+                  )}
+                />
 
                 {/* Icon */}
-                <div className="relative transition-transform duration-300 group-hover:scale-110">
+                <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
                   {ICON_MAP[dept.icon] ?? ICON_MAP.stethoscope}
                 </div>
 
                 {/* English label overlay */}
-                <span className="absolute bottom-3 left-4 text-xs font-medium uppercase tracking-[0.08em] text-white/60">
+                <span className="absolute bottom-3 left-4 z-10 text-xs font-medium uppercase tracking-[0.08em] text-white/60">
                   {dept.titleEn}
                 </span>
               </div>
