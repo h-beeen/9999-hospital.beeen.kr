@@ -58,9 +58,6 @@ export default function CTASection() {
             </a>
           </div>
 
-          <p className="mt-6 text-sm text-red-400/80">
-            응급 환자는 {HOSPITAL.emergency}로 연락해 주세요
-          </p>
         </motion.div>
 
         <p className="mt-12 text-[11px] leading-relaxed text-white/40 md:mt-16">

@@ -27,7 +27,7 @@ export default function HoursSection() {
             <p className="mt-5 text-[clamp(0.9375rem,1.2vw,1.125rem)] leading-[1.8] text-primary-light md:mt-6">
               환자분들의 편의를 위해 평일과 주말 진료 시간을
               <br className="hidden md:block" />
-              안내드립니다. 응급 상황 시 24시간 응급실을 이용해 주세요.
+              안내드립니다.
             </p>
 
             <div className="my-6 h-px w-12 bg-border md:my-8" />

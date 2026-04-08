@@ -25,7 +25,6 @@ export const HOSPITAL = {
   nameKo: "빈랩 병원 데모",
   phone: "02-1234-5678",
   phoneFull: "02-1234-5678",
-  emergency: "02-1234-9999",
   email: "info@hospital.beeen.kr",
   address: "서울특별시 강남구 테헤란로 123",
   tagline: "환자 중심의 신뢰받는 의료 서비스",

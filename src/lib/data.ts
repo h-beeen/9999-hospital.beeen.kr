@@ -111,7 +111,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
 export const OPERATING_HOURS: TimeSlot[] = [
   { day: "평일", hours: "09:00 - 18:00" },
   { day: "토요일", hours: "09:00 - 13:00" },
-  { day: "일요일 / 공휴일", hours: "휴진", note: "응급실 24시간 운영" },
+  { day: "일요일 / 공휴일", hours: "휴진" },
   { day: "점심시간", hours: "13:00 - 14:00" },
 ];
 
