@@ -95,6 +95,11 @@ export default function DoctorsPage() {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5"
           >
+            {filtered.length === 0 && (
+              <div className="col-span-full py-16 text-center">
+                <p className="text-secondary">해당 진료과에 등록된 의료진이 없습니다.</p>
+              </div>
+            )}
             {filtered.map((doctor, i) => (
               <motion.div
                 key={doctor.id}

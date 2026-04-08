@@ -4,7 +4,6 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { DEPARTMENTS } from "@/lib/data";
-import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "진료과목 | Hospital Demo",
@@ -79,17 +78,6 @@ const ICON_MAP: Record<string, React.ReactNode> = {
 };
 
 /* ------------------------------------------------------------------ */
-/*  Gradient backgrounds per category                                  */
-/* ------------------------------------------------------------------ */
-
-const GRADIENT_MAP: Record<string, string> = {
-  internal: "from-blue-500 to-blue-700",
-  orthopedics: "from-emerald-500 to-emerald-700",
-  dermatology: "from-purple-500 to-purple-700",
-  family: "from-amber-500 to-amber-700",
-};
-
-/* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 
@@ -115,13 +103,10 @@ export default function DepartmentsPage() {
             <Link
               key={dept.number}
               href={`/departments/${dept.category}`}
-              className="group overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
             >
-              {/* Image area with gradient overlay */}
-              <div
-                className="relative flex h-[160px] items-center justify-center overflow-hidden md:h-[180px]"
-              >
-                {/* Department photo */}
+              {/* Image area with unified dark overlay */}
+              <div className="relative flex h-[160px] shrink-0 items-center justify-center overflow-hidden md:h-[180px]">
                 <Image
                   src={dept.image}
                   alt={dept.titleKo}
@@ -130,13 +115,8 @@ export default function DepartmentsPage() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
 
-                {/* Gradient overlay */}
-                <div
-                  className={cn(
-                    "absolute inset-0 bg-gradient-to-br opacity-75",
-                    GRADIENT_MAP[dept.category] ?? "from-accent to-accent-dark",
-                  )}
-                />
+                {/* Unified dark navy overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#1A2332]/60 to-[#1A2332]/80" />
 
                 {/* Icon */}
                 <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
@@ -144,20 +124,20 @@ export default function DepartmentsPage() {
                 </div>
 
                 {/* English label overlay */}
-                <span className="absolute bottom-3 left-4 z-10 text-xs font-medium uppercase tracking-[0.08em] text-white/60">
+                <span className="absolute bottom-3 left-4 z-10 text-xs font-medium uppercase tracking-[0.08em] text-white/50">
                   {dept.titleEn}
                 </span>
               </div>
 
-              {/* Content */}
-              <div className="p-5">
+              {/* Content — flex-1 ensures equal height */}
+              <div className="flex flex-1 flex-col p-5">
                 <span className="text-[48px] font-extrabold leading-none text-border">
                   {dept.number}
                 </span>
                 <h2 className="mt-2 text-sm font-bold text-primary md:text-base">
                   {dept.titleKo}
                 </h2>
-                <p className="mt-3 text-sm leading-relaxed text-secondary">
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-secondary">
                   {dept.description.split("\n").map((line, j) => (
                     <span key={j}>
                       {j > 0 && <br />}

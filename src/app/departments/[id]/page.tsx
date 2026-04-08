@@ -194,13 +194,8 @@ export default async function DepartmentDetailPage({
           quality={80}
         />
 
-        {/* Gradient overlay */}
-        <div
-          className={cn(
-            "absolute inset-0 bg-gradient-to-br opacity-80",
-            GRADIENT_MAP[dept.colorTheme] ?? "from-accent to-accent-dark",
-          )}
-        />
+        {/* Unified dark navy overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A2332]/70 to-[#1A2332]/85" />
 
         <Container className="relative z-10">
           <div className="flex flex-col items-center text-center">

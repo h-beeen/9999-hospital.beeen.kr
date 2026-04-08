@@ -23,12 +23,7 @@ const STEPS = [
 
 const KOREAN_WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 
-const GRADIENT_MAP: Record<string, string> = {
-  internal: "from-blue-500 to-blue-700",
-  orthopedics: "from-emerald-500 to-emerald-700",
-  dermatology: "from-purple-500 to-purple-700",
-  family: "from-amber-500 to-amber-700",
-};
+/* Unified dark overlay for department selection cards */
 
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                            */
@@ -330,14 +325,17 @@ export default function ReservationPage() {
                         : "border-border/50"
                     )}
                   >
-                    {/* Gradient icon area */}
-                    <div
-                      className={cn(
-                        "flex h-[100px] items-center justify-center bg-gradient-to-br",
-                        GRADIENT_MAP[dept.category] ?? "from-accent to-accent-dark"
-                      )}
-                    >
-                      <span className="text-3xl font-bold text-white/80">
+                    {/* Department image with dark overlay */}
+                    <div className="relative flex h-[100px] items-center justify-center overflow-hidden">
+                      <Image
+                        src={dept.image}
+                        alt={dept.titleKo}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-[#1A2332]/60 to-[#1A2332]/80" />
+                      <span className="relative z-10 text-3xl font-bold text-white/80">
                         {dept.titleKo.charAt(0)}
                       </span>
                     </div>
