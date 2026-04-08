@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 import { NAV_ITEMS, SOCIAL_LINKS } from "@/lib/constants";
@@ -59,19 +60,30 @@ export default function GNB() {
             scrolled ? "h-[60px]" : "h-14 lg:h-[72px]"
           )}
         >
-          {/* Text Logo */}
-          <Link
-            href="/"
-            className={cn(
-              "relative z-[80] shrink-0 text-xl font-bold tracking-tight transition-colors duration-300",
-              menuOpen
-                ? "text-white"
-                : scrolled
-                  ? "text-primary"
-                  : "text-white"
-            )}
-          >
-            Hospital Demo
+          {/* Logo */}
+          <Link href="/" className="relative z-[80] h-8 w-28 shrink-0 lg:h-9 lg:w-32">
+            <Image
+              src="/images/logo-white.png"
+              alt="Hospital Demo"
+              fill
+              className={cn(
+                "object-contain object-left transition-opacity duration-300",
+                scrolled && !menuOpen ? "opacity-0" : "opacity-100"
+              )}
+              priority
+              sizes="128px"
+            />
+            <Image
+              src="/images/logo-dark.png"
+              alt="Hospital Demo"
+              fill
+              className={cn(
+                "object-contain object-left transition-opacity duration-300",
+                scrolled && !menuOpen ? "opacity-100" : "opacity-0"
+              )}
+              priority
+              sizes="128px"
+            />
           </Link>
 
           {/* Desktop Menu — right-aligned */}

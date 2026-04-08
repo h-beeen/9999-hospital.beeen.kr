@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import { HOSPITAL, SOCIAL_LINKS } from "@/lib/constants";
 
@@ -10,11 +11,14 @@ export default function Footer() {
         <div className="flex flex-col gap-10 md:flex-row md:justify-between md:gap-8">
           {/* Left: Text Logo + Tagline + SNS */}
           <div>
-            <Link
-              href="/"
-              className="inline-block text-xl font-bold tracking-tight text-white"
-            >
-              Hospital Demo
+            <Link href="/" className="relative inline-block h-8 w-28">
+              <Image
+                src="/images/logo-white.png"
+                alt="Hospital Demo"
+                fill
+                className="object-contain object-left"
+                sizes="112px"
+              />
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-white/50">
               {HOSPITAL.tagline}
