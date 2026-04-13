@@ -12,7 +12,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hospital.beeen.kr"),
+  metadataBase: new URL("https://9999-hospital.beeen.kr"),
   title: "Hospital Demo | 내과, 정형외과, 피부과, 가정의학과",
   description:
     "환자 중심의 정확한 진단과 따뜻한 치료로 신뢰받는 의료 서비스를 제공합니다. 내과, 정형외과, 피부과, 가정의학과 전문 진료.",
@@ -28,17 +28,28 @@ export const metadata: Metadata = {
     "Hospital Demo",
     "빈랩",
   ],
+  icons: {
+    icon: [
+      { url: "/favicons/favicon.ico", sizes: "any" },
+      { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicons/apple-touch-icon.png", sizes: "180x180" },
+    ],
+  },
+  manifest: "/favicons/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://hospital.beeen.kr",
+    url: "https://9999-hospital.beeen.kr",
     siteName: "Hospital Demo",
     title: "Hospital Demo — 내과·정형외과·피부과·가정의학과",
     description:
       "환자 중심의 정확한 진단과 따뜻한 치료로 신뢰받는 의료 서비스를 제공합니다.",
     images: [
       {
-        url: "/images/og-image.png",
+        url: "/assets/og-image.png",
         width: 1200,
         height: 630,
         alt: "Hospital Demo — 환자 중심의 신뢰받는 의료 서비스",
@@ -50,7 +61,7 @@ export const metadata: Metadata = {
     title: "Hospital Demo — 환자 중심의 신뢰받는 의료 서비스",
     description:
       "내과, 정형외과, 피부과, 가정의학과 전문 진료",
-    images: ["/images/og-image.png"],
+    images: ["/assets/og-image.png"],
   },
   robots: {
     index: true,
@@ -64,17 +75,17 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://hospital.beeen.kr",
+    canonical: "https://9999-hospital.beeen.kr",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
-  "@id": "https://hospital.beeen.kr",
+  "@id": "https://9999-hospital.beeen.kr",
   name: "Hospital Demo",
   alternateName: "빈랩 병원 데모",
-  url: "https://hospital.beeen.kr",
+  url: "https://9999-hospital.beeen.kr",
   description:
     "내과, 정형외과, 피부과, 가정의학과 전문 진료를 제공하는 병원 웹사이트 데모",
   address: {
